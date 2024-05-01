@@ -12,13 +12,10 @@ This is where the **Zellular Sequencer** comes into play. Using Zellular Sequenc
 In Zellular Sequencer, one of the network nodes, the Sequencer, takes the leader role for sequencing tasks. User-signed requests received by a node are applied to the database only after being sent to the leader and received back along with other nodes’ requests in a consistent order.
 
 .. image:: images/image1.png
-  :width: 800
+  :width: 600
   :alt: Zellular Sequencer Architecture
 
 If the Sequencer malfunctions—by going offline, censoring requests, or sending inconsistent orders—other nodes can challenge its actions. Should enough nodes agree, the Sequencer's role will seamlessly transfer to a new leader. This mechanism makes the Zellular Sequencer a Byzantine Fault Tolerant (BFT) service, facilitating sequencing without a single point of failure.
-
-Check out the :doc:`usage` section for further information, including
-how to :ref:`installation` the project.
 
 .. note::
 
@@ -29,5 +26,7 @@ Contents
 
 .. toctree::
 
-   usage
+   guide
+   internal
    api
+
