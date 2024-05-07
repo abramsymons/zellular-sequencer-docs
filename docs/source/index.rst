@@ -3,7 +3,7 @@ Zellular Sequencer
 
 `Replicating <https://en.wikipedia.org/wiki/State_machine_replication>`_ centralised services across multiple nodes creates a decentralised system that remains robust, even if some nodes fail or act maliciously—this is the essence of `Byzantine Fault Tolerance <https://en.wikipedia.org/wiki/Byzantine_fault>`_.
 
-The first phase in decentralizing a centralized service using this approach is to enable each node to independently verify the authenticity of the shared data. This is achieved by substituting the conventional username/password login with signature-based authentication at every place where users send their requests.
+The first phase in decentralizing a centralized service using this approach is to replace the conventional username/password login with signature-based authentication at every place where users send their requests to enable each node to independently verify those requets.
 
 The second phase is to ensure that all replicated nodes maintain identical databases or states requires receiving and applying user-signed requests in a uniform sequence. Divergent application of updates can lead to desynchronization among nodes.
 
