@@ -29,15 +29,18 @@ Finalising
 
 .. figure:: images/image2.png
   :align: center
-  :width: 500
+  :width: 800
   :alt: Finalising Process
 
 Disputing
 ---------
 
 * **Initiating a Dispute:** A node initiates a dispute against the Sequencer if:
+
   * The Sequencer fails to respond, indicating it may be offline.
+
   * The Sequencer excludes the node's transactions, suggesting censorship.
+
   * The Sequencer does not update the finalisation proof within a predefined period, implying possible inconsistency in transaction orders.
 
 * **Sharing Evidence:** The node shares the problematic transactions with other nodes and collects their signatures to confirm the Sequencer's malfunction.
