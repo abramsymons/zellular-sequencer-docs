@@ -1,8 +1,26 @@
 The Protocol
 ============
 
+Design Principles
+-----------------
+
+We present Zellular, a leader-based Byzantine Fault Tolerant (BFT) replication protocol, with unique design principles compared to PBFT, Tendermint, and HotStuff.
+
+Proposer Rotation
+~~~~~~~~~~~~~~~~~
+
+In other protocols, the proposer role rotates among nodes to distribute block formation tasks and incentivize participation. However, Zellular focuses on switching the sequencer only in the event of a fault, removing the need for rotation and reward distribution based on processing.
+
+Gossip Propagation
+~~~~~~~~~~~~~~~~~~
+
+Other solutions use the Gossip protocol for transaction propagation, which lacks an upper limit on the number of rounds needed. The proposer must resend transactions to all nodes, resulting in at least (n + 1) rounds. In contrast, Zellular eliminates the need for view-change by using a single sequencer. The node receiving the transaction sends it to the sequencer, and all nodes get the latest transactions from the sequencer upon request. This ensures transaction propagation in exactly two rounds, making the process more efficient and deterministic.
+
+The Workflow
+------------
+
 Posting
--------
+~~~~~~~
 
 * **Receiving Transactions:** A node receives user transactions and sets their state to *initialised*.
 
@@ -13,7 +31,7 @@ Posting
 * **Regular Posting:** Nodes must regularly post requests to the Sequencer, even without new transactions, to stay updated on transactions from other nodes.
 
 Finalising
-----------
+~~~~~~~~~~
 
 * **Calculate Chaining Hash:** For each transaction with index ``n``, the node computes the chaining hash as h\ :sub:`n` = hash( h\ :sub:`n-1` + hash(tx\ :sub:`n` ) ) to ensure a consistent transaction order across all nodes.
 
@@ -33,7 +51,7 @@ Finalising
   :alt: Finalising Process
 
 Disputing
----------
+~~~~~~~~~
 
 * **Initiating a Dispute:** A node initiates a dispute against the Sequencer if:
 
@@ -48,7 +66,7 @@ Disputing
 * **Triggering a Switch:** If the threshold number of nodes confirms the issue, the node sends the collected signatures to all nodes to initiate the switching process.
 
 Switching
----------
+~~~~~~~~~
 
 * **Resetting Transactions:** Upon receiving a switch request, nodes reset all *sequenced* transactions to *initialised* and switch to the next Sequencer.
 
