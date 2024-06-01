@@ -14,7 +14,7 @@ In other protocols, the proposer role rotates among nodes to distribute block fo
 Gossip Propagation
 ~~~~~~~~~~~~~~~~~~
 
-Other solutions use the Gossip protocol for transaction propagation, which lacks an upper limit on the number of rounds needed. The proposer must resend transactions to all nodes, resulting in at least (n + 1) rounds. In contrast, Zellular eliminates the need for view-change by using a single sequencer. The node receiving the transaction sends it to the sequencer, and all nodes get the latest transactions from the sequencer upon request. This ensures transaction propagation in exactly two rounds, making the process more efficient and deterministic.
+Other solutions use the Gossip protocol for transaction propagation, which lacks an upper limit on the number of rounds needed. The proposer must resend transactions to all nodes, resulting in at least (n + 1) rounds where n is at least 1. In contrast, Zellular eliminates the need for rotation of proposer by using a single sequencer. The node receiving the transaction sends it to the sequencer, and all nodes get the latest transactions from the sequencer upon request. This ensures transaction propagation in exactly two rounds, making the process more efficient and deterministic.
 
 The Workflow
 ------------
